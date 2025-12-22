@@ -43,6 +43,8 @@ app.get("/", (req, res) => {
 });
 
 
+require('./app/routes/carro.routes.js')(app);
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
