@@ -4,7 +4,6 @@ const app = express();
 
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-const e = require('express');
 
 
 const PORT = process.env.PORT || 3000;
@@ -12,6 +11,8 @@ const PORT = process.env.PORT || 3000;
 const corsOptions = {
     origin: 'http://localhost',
 };
+
+app.use(cors());
 
 const swaggerDefinition = {
   openapi: '3.0.1',

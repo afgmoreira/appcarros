@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Carros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card-carro { transition: transform 0.2s; }
+        .card-carro:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <h1 class="text-center mb-5">🚗 Gestão de Stock</h1>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Adicionar Novo Carro</h5>
+                </div>
+                <div class="card-body">
+                    <form id="formAdicionar">
+                        <div class="mb-3">
+                            <label class="form-label">Modelo</label>
+                            <input type="text" class="form-control" id="modelo" required placeholder="Ex: Megane RS">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ano</label>
+                            <input type="number" class="form-control" id="ano" required placeholder="2024">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Motorização</label>
+                            <input type="text" class="form-control" id="motorizacao" placeholder="Ex: 1.8 Turbo">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Potência (cv)</label>
+                            <input type="number" class="form-control" id="potencia" placeholder="280">
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label class="form-label">ID Marca</label>
+                                <input type="number" class="form-control" id="marcaId" required placeholder="1-13">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">ID Tipo</label>
+                                <input type="number" class="form-control" id="tipoId" required placeholder="1-11">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Guardar Carro</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Lista de Carros</h5>
+                    <button class="btn btn-sm btn-outline-light" onclick="carregarCarros()">Atualizar Lista</button>
+                </div>
+                <div class="card-body">
+                    <div id="listaCarros" class="row g-3">
+                        <div class="text-center py-4">
+                            <div class="spinner-border text-primary" role="status"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

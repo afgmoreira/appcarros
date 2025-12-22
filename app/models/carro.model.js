@@ -11,6 +11,7 @@ const Carro = function(carro) {
 };
 
 Carro.insert = (newCarro, result) => {
+  // SEGURO: Usa ? para os dados
   sql.query("INSERT INTO carros SET ?", newCarro, (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -23,7 +24,8 @@ Carro.insert = (newCarro, result) => {
 };
 
 Carro.findById = (id, result) => {
-  sql.query(`SELECT * FROM carros WHERE id = ${id}`, (err, res) => {
+  // CORRIGIDO: Agora usa ? em vez de ${id}
+  sql.query("SELECT * FROM carros WHERE id = ?", [id], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -40,10 +42,16 @@ Carro.findById = (id, result) => {
 
 Carro.selectAll = (modelo, result) => {
   let query = "SELECT * FROM carros";
+  let queryParams = [];
+
   if (modelo) {
-    query += ` WHERE modelo LIKE '%${modelo}%'`;
+    // CORRIGIDO: Usa ? e adiciona os % no parâmetro
+    query += " WHERE modelo LIKE ?";
+    queryParams.push(`%${modelo}%`);
   }
-  sql.query(query, (err, res) => {
+
+  // Passamos o array de parâmetros como segundo argumento
+  sql.query(query, queryParams, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -55,7 +63,7 @@ Carro.selectAll = (modelo, result) => {
 };
 
 Carro.updateById = (id, carro, result) => {
-  // Removido imagem_url da query UPDATE
+  // SEGURO: Já usava ? corretamente
   sql.query(
     "UPDATE carros SET modelo = ?, ano = ?, motorizacao = ?, potencia_cv = ?, marca_id = ?, tipo_id = ? WHERE id = ?",
     [carro.modelo, carro.ano, carro.motorizacao, carro.potencia_cv, carro.marca_id, carro.tipo_id, id],
@@ -76,7 +84,8 @@ Carro.updateById = (id, carro, result) => {
 };
 
 Carro.delete = (id, result) => {
-  sql.query("DELETE FROM carros WHERE id = ?", id, (err, res) => {
+  // SEGURO: Já usava ? corretamente
+  sql.query("DELETE FROM carros WHERE id = ?", [id], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
