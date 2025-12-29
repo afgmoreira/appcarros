@@ -42,30 +42,30 @@ INSERT INTO carros (modelo, ano, motorizacao, potencia_cv, marca_id, tipo_id) VA
 ('M4 Competition', 2024, '3.0L TwinTurbo', 510,  2, 5),
 
 
-('Yaris Hybrid', 2023, '1.5L Hybrid', 116, 3, 9);
+('Yaris Hybrid', 2023, '1.5L Hybrid', 116, 3, 9),
 
-('A6 Avant', 2023, '2.0L TDI', 204, 4, 4);
+('A6 Avant', 2023, '2.0L TDI', 204, 4, 4),
 
 
-('Classe S Longo', 2024, '3.0L I6', 435, 5, 3);
+('Classe S Longo', 2024, '3.0L I6', 435, 5, 3),
 
 ('Polo GTI', 2023, '2.0L TSI', 207, 6, 10),
 
 
-('Model Y Performance', 2024, 'Dual Motor AWD', 534, 7, 8);
+('Model Y Performance', 2024, 'Dual Motor AWD', 534, 7, 8),
 
-('911 Carrera S Cabrio', 2024, '3.0L Boxer 6', 450, 8, 6);
-
-
-('F8 Tributo', 2023, '3.9L V8 Turbo', 720, 9, 1);
-
-('Tucson N Line', 2024, '1.6L T-GDI', 180, 10, 2);
+('911 Carrera S Cabrio', 2024, '3.0L Boxer 6', 450, 8, 6),
 
 
-('XC90 Recharge', 2024, 'Híbrido Plug-in', 455, 11, 2);
+('F8 Tributo', 2023, '3.9L V8 Turbo', 720, 9, 1),
+
+('Tucson N Line', 2024, '1.6L T-GDI', 180, 10, 2),
 
 
-('Navara Pro-4X', 2023, '2.3L dCi', 190, 12, 7);
+('XC90 Recharge', 2024, 'Híbrido Plug-in', 455, 11, 2),
+
+
+('Navara Pro-4X', 2023, '2.3L dCi', 190, 12, 7),
 
 
 ('Corvette Stingray', 2024, '6.2L V8', 495, 13, 1);

@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Carros</title>
+    <!-- Importação do CSS do Bootstrap a partir de CDN para estilos prontos a usar -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Cor de fundo suave para toda a página */
         body { background-color: #f8f9fa; }
+        /* Pequena animação ao passar o rato sobre cada card de carro */
         .card-carro { transition: transform 0.2s; }
         .card-carro:hover { transform: translateY(-5px); }
     </style>
 </head>
 <body>
 
+<!-- Contentor principal com espaçamento vertical -->
 <div class="container py-5">
     <h1 class="text-center mb-5">🚗 Gestão de Stock</h1>
 
     <div class="row">
+        <!-- Coluna esquerda: formulário para adicionar novos carros -->
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">Adicionar Novo Carro</h5>
                 </div>
                 <div class="card-body">
+                    <!-- Formulário que o script.js vai usar para enviar dados para a API -->
                     <form id="formAdicionar">
                         <div class="mb-3">
                             <label class="form-label">Modelo</label>
@@ -56,14 +62,18 @@
             </div>
         </div>
 
+        <!-- Coluna direita: lista de carros carregados da API -->
         <div class="col-md-8">
             <div class="card shadow-sm">
                 <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Lista de Carros</h5>
+                    <!-- Botão que permite voltar a pedir os dados à API manualmente -->
                     <button class="btn btn-sm btn-outline-light" onclick="carregarCarros()">Atualizar Lista</button>
                 </div>
                 <div class="card-body">
+                    <!-- Contentor onde o script.js vai injetar dinamicamente as cards de carros -->
                     <div id="listaCarros" class="row g-3">
+                        <!-- Indicador de carregamento inicial, substituído depois pelo JavaScript -->
                         <div class="text-center py-4">
                             <div class="spinner-border text-primary" role="status"></div>
                         </div>
@@ -74,6 +84,7 @@
     </div>
 </div>
 
+<!-- Inclusão do ficheiro JavaScript que faz a ligação à API e atualiza o DOM -->
 <script src="script.js"></script>
 
 </body>

@@ -1,5 +1,8 @@
+
 module.exports = app => {
+    // Importa o controller que contém a lógica de cada operação
     const carros = require("../controllers/carro.controller.js");
+    // Cria um router Express para agrupar as rotas relacionadas com carros
     const router = require("express").Router();
 
     /**
@@ -12,6 +15,7 @@ module.exports = app => {
      *       200:
      *         description: Lista de carros
      */
+    // GET /api/carros -> devolve todos os carros 
     router.get("/", carros.selectAll);
 
     /**
@@ -33,6 +37,7 @@ module.exports = app => {
      *       404:
      *         description: Carro não encontrado
      */
+    // GET /api/carros/:id -> devolve um carro específico pelo seu ID
     router.get("/:id", carros.findById);
 
     /**
@@ -71,6 +76,7 @@ module.exports = app => {
      *       200:
      *         description: Carro criado com sucesso
      */
+    // POST /api/carros -> cria um novo carro com os dados enviados no corpo do pedido
     router.post("/", carros.insert);
 
     /**
@@ -111,6 +117,7 @@ module.exports = app => {
      *       404:
      *         description: Carro não encontrado
      */
+    // PUT /api/carros/:id -> atualiza os dados de um carro existente
     router.put("/:id", carros.update);
 
     /**
@@ -132,6 +139,7 @@ module.exports = app => {
      *       404:
      *         description: Carro não encontrado
      */
+    // DELETE /api/carros/:id -> elimina um carro específico
     router.delete("/:id", carros.delete);
 
     /**
@@ -144,7 +152,9 @@ module.exports = app => {
      *       200:
      *         description: Todos os carros foram eliminados
      */
+    // DELETE /api/carros -> elimina todos os carros da base de dados
     router.delete("/", carros.deleteAll);
 
+    // Regista este router na aplicação com o prefixo /api/carros
     app.use("/api/carros", router);
 };
