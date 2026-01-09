@@ -46,15 +46,17 @@
                             <label class="form-label">Potência (cv)</label>
                             <input type="number" class="form-control" id="potencia" placeholder="280">
                         </div>
-                        <div class="row">
-                            <div class="col-6 mb-3">
-                                <label class="form-label">ID Marca</label>
-                                <input type="number" class="form-control" id="marcaId" required placeholder="1-13">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label class="form-label">ID Tipo</label>
-                                <input type="number" class="form-control" id="tipoId" required placeholder="1-11">
-                            </div>
+                        <div class="mb-3">
+                            <label class="form-label">Marca</label>
+                            <select class="form-select" id="marcaId" required>
+                                <option value="" selected disabled>A carregar marcas...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tipo</label>
+                            <select class="form-select" id="tipoId" required>
+                                <option value="" selected disabled>A carregar tipos...</option>
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Guardar Carro</button>
                     </form>

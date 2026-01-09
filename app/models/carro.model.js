@@ -31,7 +31,15 @@ Carro.insert = (newCarro, result) => {
 
 // Procura um carro pelo seu ID (SELECT ... WHERE id = ?)
 Carro.findById = (id, result) => {
-  sql.query("SELECT * FROM carros WHERE id = ?", [id], (err, res) => {
+
+  const query = `
+    SELECT c.*, m.nome_marca, t.nome_tipo 
+    FROM carros c
+    INNER JOIN marcas m ON c.marca_id = m.id
+    INNER JOIN tipos t ON c.tipo_id = t.id
+    WHERE c.id = ?`;
+
+  sql.query(query, [id], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -53,7 +61,11 @@ Carro.findById = (id, result) => {
 // Devolve todos os carros, com possibilidade de filtrar pelo modelo
 // Se "modelo" vier preenchido, faz um WHERE modelo LIKE "%modelo%"
 Carro.selectAll = (modelo, result) => {
-  let query = "SELECT * FROM carros";
+  let query = `
+    SELECT c.*, m.nome_marca, t.nome_tipo 
+    FROM carros c
+    INNER JOIN marcas m ON c.marca_id = m.id
+    INNER JOIN tipos t ON c.tipo_id = t.id`;
   let queryParams = [];
 
   // Se o parâmetro modelo existir, adiciona condição à query
@@ -131,6 +143,29 @@ Carro.deleteAll = result => {
     console.log(`Eliminado(s) ${res.affectedRows} carro(s)`);
     result(null, res);
   });
+};
+
+// --- NOVAS FUNÇÕES PARA OS DROPDOWNS ---
+Carro.getAllMarcas = result => {
+    sql.query("SELECT * FROM marcas", (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+        result(null, res);
+    });
+};
+
+Carro.getAllTipos = result => {
+    sql.query("SELECT * FROM tipos", (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+        result(null, res);
+    });
 };
 
 // Exporta o modelo Carro para ser usado noutros ficheiros (controllers, etc.)

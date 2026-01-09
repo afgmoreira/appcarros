@@ -5,6 +5,14 @@ module.exports = app => {
     // Cria um router Express para agrupar as rotas relacionadas com carros
     const router = require("express").Router();
 
+    // --- Rotas Auxiliares ---
+
+    // Obter todas as marcas para o dropdown
+    router.get("/marcas", carros.findAllMarcas);
+
+    // Obter todos os tipos para o dropdown
+    router.get("/tipos", carros.findAllTipos);
+
     /**
      * @swagger
      * /api/carros:

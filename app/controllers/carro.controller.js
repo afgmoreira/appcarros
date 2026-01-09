@@ -102,3 +102,21 @@ exports.deleteAll = (req, res) => {
     else res.send({ message: "Todos os carros foram eliminados..." });
   });
 };
+
+// --- NOVOS CONTROLLERS AUXILIARES ---
+
+exports.findAllMarcas = (req, res) => {
+    Carro.getAllMarcas((err, data) => {
+        if (err)
+            res.status(500).send({ message: err.message || "Erro ao procurar marcas." });
+        else res.send(data);
+    });
+};
+
+exports.findAllTipos = (req, res) => {
+    Carro.getAllTipos((err, data) => {
+        if (err)
+            res.status(500).send({ message: err.message || "Erro ao procurar tipos." });
+        else res.send(data);
+    });
+};
